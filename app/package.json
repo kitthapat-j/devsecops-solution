@@ -6,7 +6,8 @@
     "selenium-webdriver": "^4.0.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "sonar": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
   "devDependencies": {
     "jest": "^29.7.0",
