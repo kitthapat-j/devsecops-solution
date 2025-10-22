@@ -5,9 +5,11 @@
     "express": "4.16.4",
     "selenium-webdriver": "^4.0.0"
   },
+  "type": "module", 
   "scripts": {
     "start": "node index.js",
-    "sonar": "node_modules/sonar-scanner/bin/sonar-scanner"
+    "sonar": "node_modules/sonar-scanner/bin/sonar-scanner",
+    "dev": "node index.js"
   },
   "devDependencies": {
     "jest": "^29.7.0",
