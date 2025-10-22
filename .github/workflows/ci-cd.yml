@@ -28,6 +28,9 @@ jobs:
       - name: Install App Dependencies
         run: npm install --prefix app
 
+      - name: Run Unit Tests and Generate Coverage Report (LCOV)
+        run: npx jest --coverage --config app/package.json --forceExit
+
       - name: SonarQube Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,7 +42,10 @@ jobs:
             -Dsonar.organization=kitthapat-j \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.sources=app 
+            -Dsonar.sources=app \
+            -Dsonar.javascript.lcov.reportPaths=app/coverage/lcov.info \
+            -Dsonar.coverage.exclusions=app/index.js
+
 
       - name: Delay to ensure Quality Gate Status is ready
         run: echo "Waiting for 30 seconds for SonarQube processing..." && sleep 30s   
